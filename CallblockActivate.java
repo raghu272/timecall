@@ -93,7 +93,7 @@ public class CallblockActivate extends ActionBarActivity {
                                 super.onCallStateChanged(state, incomingNumber);               //Trying to get the incoming number
                                 //System.out.println("incomingNumber : "+incomingNumber);
                                 Toast.makeText(getBaseContext(), incomingNumber, Toast.LENGTH_LONG).show();
-
+//to push
                                 if(blockAll_cb.isChecked())
                                 {
                                     AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
