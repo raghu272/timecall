@@ -1,6 +1,7 @@
 package com.example.raghu272.timecall;
 
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Context;
@@ -89,15 +90,15 @@ public class Timesetter extends ActionBarActivity {
 	            // given AlarmReciever in the Intent, the onRecieve() method of this class will execute when
 	            // alarm triggers and 
 	            //we will write the code to send SMS inside onRecieve() method pf Alarmreceiver class
-                Intent intentCallBlock= new Intent(this,CallblockActivate.class);
+                Intent intentCallBlock= new Intent(this,starter.class);
 
-                startActivity(intentCallBlock);
+                //startActivity(intentCallBlock);
                 //sendBroadcast(intentCallBlock);
 	            // create the object
 	            AlarmManager callblockmanager=(AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
 	            //set the alarm for particular time
-	            //callblockmanager.set(AlarmManager.RTC_WAKEUP,targetCal.getTimeInMillis(), PendingIntent.getBroadcast(this,1,  intentCallBlock, PendingIntent.FLAG_UPDATE_CURRENT));
+	            callblockmanager.set(AlarmManager.RTC_WAKEUP,targetCal.getTimeInMillis(), PendingIntent.getBroadcast(this, 1, intentCallBlock, PendingIntent.FLAG_UPDATE_CURRENT));
 	           Toast.makeText(this, "Activity Scheduled", Toast.LENGTH_LONG).show();
 	         
 	    }
