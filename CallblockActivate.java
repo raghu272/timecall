@@ -1,5 +1,6 @@
 package com.example.raghu272.timecall;
 
+import android.app.AlarmManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +35,8 @@ public class CallblockActivate extends ActionBarActivity {
 
         ///////////////////////////////////////////////////////////////////////////////////////////
         initviews();
+        final Intent intentAlarm;
+        intentAlarm = new Intent(this, AlarmReceiver.class);
         blockAll_cb.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
             @Override
@@ -93,8 +96,12 @@ public class CallblockActivate extends ActionBarActivity {
 
                                 if(blockAll_cb.isChecked())
                                 {
+                                    AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                                    intentAlarm.putExtra("PERIOD",incomingNumber);
+                                    sendBroadcast(intentAlarm);
+                                   // alarmManager.set(AlarmManager.RTC_WAKEUP,targetCal.getTimeInMillis(), PendingIntent.getBroadcast(this, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
 
-                                        telephonyService.endCall();
+                                    telephonyService.endCall();
 
                                 }
                             }
